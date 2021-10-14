@@ -57,6 +57,6 @@ Read and run the examples 04-StreamingTimeServer and 05-DumbHttpClient as exampl
 
 - Use the skeleton provided as a basis
 - One student implements a client in Java
-- The other student implements a server in Java. The server can be single threaded (doesn't use threads) or multithreaded. The single-threaded server is slightly easier to implement, but the **maximum grade you can get is 5.5**.
+- The other student implements a server in Java. The server can be single threaded (doesn't use threads) or multithreaded. The single-threaded server is slightly easier to implement. **However, in a test you should be able to implement the multi-threaded version**.
 - The team performs various tests to validate that the client and the server work together (on the same machine, across two machines connected to the same network, ...)
 - Add your code in your folder and submit a PR on the upstream server.
