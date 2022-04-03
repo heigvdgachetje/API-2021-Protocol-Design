@@ -1,8 +1,7 @@
 package ch.heigvd.api.calc;
 
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.util.logging.Level;
+import java.io.*;
+import java.net.Socket;
 import java.util.logging.Logger;
 
 /**
@@ -17,11 +16,9 @@ public class Client {
      *
      * @param args no args required
      */
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         // Log output on a single line
         System.setProperty("java.util.logging.SimpleFormatter.format", "%4$s: %5$s%6$s%n");
-
-        BufferedReader stdin = null;
 
         /* TODO: Implement the client here, according to your specification
          *   The client has to do the following:
@@ -33,7 +30,38 @@ public class Client {
          *     - read the response line from the server (using BufferedReader.readLine)
          */
 
-        stdin = new BufferedReader(new InputStreamReader(System.in));
 
+        String address = "127.0.0.1";
+        int port = 4567;
+
+        Socket socket = new Socket(address, port);
+
+        try (
+            InputStream inputStream = socket.getInputStream();
+            OutputStream outputStream = socket.getOutputStream();
+        ) {
+            BufferedReader stdin = new BufferedReader(new InputStreamReader(System.in));
+            BufferedReader in = new BufferedReader(new InputStreamReader(inputStream));
+            PrintWriter out = new PrintWriter(outputStream);
+
+            String welcome = in.readLine();
+            System.out.println(welcome);
+
+            while (socket.isConnected()) {
+                String input = stdin.readLine();
+
+                out.println(input);
+                out.flush();
+
+                String response = in.readLine();
+                if (response != null)
+                    System.out.println(response);
+
+                if (input.toLowerCase().equals("exit"))
+                    return;
+            }
+
+            socket.close();
+        }
     }
 }

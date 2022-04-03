@@ -85,10 +85,10 @@ At first, only these four basic operations will be supported:
 
 |   Operation    | Client-side operator | Server-side operator |
 |:--------------:|:--------------------:|:--------------------:|
-|    addition    |        `add`         |         `+`          |
-|  subtraction   |        `sub`         |         `-`          |
-| multiplication |        `mul`         |         `*`          |
-|    division    |        `div`         |         `/`          |
+|    addition    |         `+`          |         `+`          |
+|  subtraction   |         `-`          |         `-`          |
+| multiplication |         `*`          |         `*`          |
+|    division    |         `/`          |         `/`          |
 
 Note: if the 2 operands of a division are integers, an integer division is performed.
 
@@ -106,16 +106,16 @@ Some possible extensions:
 
 ### Examples: examples of some typical dialogs.
 ```
-> Welcome! To request a computation, send "[Operator] [Operand1] [Operand2]". To get more information, send "help".
-add 2 2
+> Welcome-To request a computation, send "[Operator] [Operand1] [Operand2]". To get more information, send "help".
++ 2 2
 > 2 + 2 = 4
 asdf
-> Error! Invalid request "asdf". To get more information, send "help".
-div 5 2
+> Error-Invalid request "asdf". To get more information, send "help".
+/ 5 2
 > 5 / 2 = 2
-div 5. 2
+/ 5. 2
 > 5 / 2 = 2.5
-mul 3 1e3
+* 3 1e3
 > 3 * 1000 = 3000
 exit
 ```
